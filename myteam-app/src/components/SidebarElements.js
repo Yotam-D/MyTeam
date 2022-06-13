@@ -6,17 +6,17 @@ const Elements = [
     {
         title:'League',
         icon: <EmojiEventsIcon />,
-        link:'/League'
+        link:'/League',
     },
     {
         title:'Squad',
         icon: <GroupsIcon />,
-        link:'/Squad'
+        link:'/Squad',
     },
     {
         title:'Stats',
         icon: <QueryStatsIcon />,
-        link:'/Stats'
+        link:'/Stats',
     }
 
 ];

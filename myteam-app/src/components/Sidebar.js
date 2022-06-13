@@ -1,17 +1,25 @@
+import { useState } from 'react';
 import React from 'react'
-import Elements from './SidebarElements';
+import sideElements from './SidebarElements';
 
 
 export default function Sidebar() {
-    console.log(Elements);
+  const [checked, setChecked] = useState("League");
+
+  const handleSideClick = (clickedTitle) => {
+    setChecked(clickedTitle)
+  }
+
+
+
   return (
     <div className='sidebar'>
         <ul className = 'sideList'>
-            {Elements.map((item,index)=> {
+            {sideElements.map((item,index)=> {
                 return(
-                        <li className = 'sideItem' key = {index} onClick ={()=> {console.log('clicked'+item.title)}}>
-                            <div>{item.icon}</div>
-                            <div>{item.title}</div>
+                        <li className = {item.title === checked ? 'checkedItem' : 'uncheckedItem'} key = {index} onClick ={()=> handleSideClick(item.title)}>
+                            <div className='sideIcon'>{item.icon}</div>
+                            <div className='sideTitle'>{item.title}</div>
                         </li>
                 )})
             }
