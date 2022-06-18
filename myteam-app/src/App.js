@@ -16,7 +16,8 @@ function App() {
         <div className='main-cointainer'>
 
             <Routes>
-              <Route exact path = "/login" element = {<Login/>}></Route>
+              <Route exact path = "/login" element = {<Login title='Login' />}></Route>
+              <Route exact path = "/register" element = {<Login title='Sign up' />}></Route>
               <Route exact path = "/teams" element = {<AllTeams/>}></Route>
               <Route exact path = "/dashboard" element = {<Dashboard/>}></Route>
             </Routes>
