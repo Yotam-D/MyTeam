@@ -53,9 +53,9 @@
 }
 
 .uncheckedItem:hover{
+  background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   color: white;
-  font-size: 1.05em;
 }
 
 .sideIcon{
@@ -67,7 +67,6 @@
   padding-left: 1em;
   width: 70%;
 }
-
 
 
 
