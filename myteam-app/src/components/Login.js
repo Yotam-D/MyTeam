@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import axios from 'axios';
  
 
 
@@ -12,6 +13,7 @@ export default function Login(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordCfm, setPasswordCfm] = useState('')
+  const [name, setName] = useState('')
   const [UImsg, setUImsg] = useState('')
 
   useEffect(()=> {
@@ -21,8 +23,28 @@ export default function Login(props) {
   const handleLog = async () => {
     console.log('login');
   }
+
   const handleReg = async () => {
-    console.log('register');
+    if(password === passwordCfm){
+      try {
+        let response = await axios.post('/register', {
+          name, email, password
+        }, {
+          withCredentials:true,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type' : 'application/json',
+          }
+        })
+        console.log(response.data);
+        setUImsg(response.data.msg)
+      } catch (error) {
+        console.error(error);
+        setUImsg(error.response.data.msg)
+      }
+    } else {
+      setUImsg('the passwords does not match')
+    }
   }
 
   return (
@@ -31,7 +53,7 @@ export default function Login(props) {
         <h2>{title}</h2>
         <Box component="form" noValidate p={3} autoComplete='off'>
           <TextField id='email' label = 'Enter Email' fullWidth sx={{ input: { color: 'white' }}} onChange={(e)=>setEmail(e.target.value)}/>
-          <TextField id='password' label = 'Enter Password' fullWidth sx={{mt:2}} onChange={(e)=>setPassword(e.target.value)}/>
+          <TextField id='password' label = 'Enter Password' fullWidth sx={{mt:2, input: { color: 'white' }}} onChange={(e)=>setPassword(e.target.value)}/>
           
           {title === "Login" ? 
           <>
@@ -40,13 +62,14 @@ export default function Login(props) {
           </>
           : 
           <>
-            <TextField id='repassword' label = 'Confirm Password' fullWidth sx={{mt:2}} onChange={(e)=>setPasswordCfm(e.target.value)}/>
+            <TextField id='repassword' label = 'Confirm Password' fullWidth sx={{mt:2, input: { color: 'white' }}} onChange={(e)=>setPasswordCfm(e.target.value)}/>
+            <TextField id='user_name' label = 'User Name' fullWidth sx={{mt:2, input: { color: 'white' }}} onChange={(e)=>setName(e.target.value)}/>
             <Button variant="text" onClick={()=>handleReg()}>Create User</Button>
             <Box> <p>Already Have Account <Link to='/login'>Login Here</Link></p> </Box>
           </>
          }
           <Box>
-            <p>{UImsg}</p>
+            <p className='ui-massage'>{UImsg}</p>
           </Box>
        </Box>
         

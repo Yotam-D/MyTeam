@@ -1,8 +1,18 @@
+import bcrypt from 'bcrypt';
 import UsersModel from "../models/UsersModels.js";
 
 
-export const getUsers = (req,res) => {
-    res.json({mgs:'users'})
+export const getUsers = async (req,res) => {
+    try{
+        const users = await UsersModel.findAll({
+            attributes:['id', 'name', 'email', 'password']
+        })
+        console.log(users)
+        res.json({users})
+    } catch (error) {
+        console.error(error)
+        res.status(404).json({mgs:'couldnt get users'})
+    }
 }
 export const login = (req,res) => {
     res.json({mgs:'login'})
@@ -10,6 +20,18 @@ export const login = (req,res) => {
 export const logout = (req,res) => {
     res.json({mgs:'logout'})
 }
-export const register = (req,res) => {
-    res.json({mgs:'register'})
+export const register = async (req,res) => {
+    const {name,email,password} = req.body;
+    const salt = await bcrypt.genSalt();
+    const hashPassword = await bcrypt.hash(password,salt);
+    try {
+        await UsersModel.create({
+            name:name,
+            email:email,
+            password:password,
+        })
+        res.json({msg:"Sign Up succeeded!"})
+    } catch (error) {
+        res.status(403).json({msg:'this email is already assigned to a user'})
+    }
 }

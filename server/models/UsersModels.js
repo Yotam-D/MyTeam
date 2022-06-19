@@ -13,6 +13,9 @@ const UsersModel = db.define('users',{
     password:{
         type: DataTypes.STRING
     },
+    team:{
+        type: DataTypes.STRING
+    },
     createdAt:{
         field: 'createdat',
         type: DataTypes.DATE
