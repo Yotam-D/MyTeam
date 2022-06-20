@@ -1,27 +1,47 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
- 
+import { AppContext } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Login(props) {
+  const navigate = useNavigate();
   const {title} = props;
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordCfm, setPasswordCfm] = useState('')
   const [name, setName] = useState('')
   const [UImsg, setUImsg] = useState('')
+  const {setAccessToken} = useContext(AppContext)
 
   useEffect(()=> {
     setUImsg('')
   }, [])
 
   const handleLog = async () => {
-    console.log('login');
+    try {
+      let response = await axios.post('/login', {
+        name, email, password
+      }, {
+        withCredentials:true,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type' : 'application/json',
+        }
+      })
+      console.log(response.data);
+      setUImsg(response.data.msg)
+      setAccessToken(response.data)
+      navigate('/teams')
+    } catch (error) {
+      console.error(error);
+      setUImsg(error.response.data.msg)
+    }
   }
 
   const handleReg = async () => {

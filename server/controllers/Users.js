@@ -1,5 +1,8 @@
 import bcrypt from 'bcrypt';
 import UsersModel from "../models/UsersModels.js";
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
+dotenv.config();
 
 
 export const getUsers = async (req,res) => {
@@ -14,8 +17,29 @@ export const getUsers = async (req,res) => {
         res.status(404).json({mgs:'couldnt get users'})
     }
 }
-export const login = (req,res) => {
-    res.json({mgs:'login'})
+export const login = async (req,res) => {
+    try {
+        const user = await UsersModel.findAll({
+            where: {
+                email: req.body.email
+            }
+        })
+        const match = await bcrypt.compare(req.body.password,user[0].password)
+        if(!match) return res.status(404).json({msg:'Password is incorrect!'})
+        const userID = user[0].id;
+        const email = user[0].email;
+        const name = user[0].name;
+        const accessToken = jwt.sign({userID,email}, process.env.ACCESS_TOKEN_SECRET,{
+            expiresIn: '300s'
+        })
+        res.cookie('accessToken', accessToken, {
+            httpOnly: true,
+            maxAge: 60 * 1000,
+        })
+        res.json({accessToken})
+    } catch (error) {
+        res.status(404).json({msg:'email was not found!'})
+    }
 }
 export const logout = (req,res) => {
     res.json({mgs:'logout'})
@@ -28,7 +52,7 @@ export const register = async (req,res) => {
         await UsersModel.create({
             name:name,
             email:email,
-            password:password,
+            password:hashPassword,
         })
         res.json({msg:"Sign Up succeeded!"})
     } catch (error) {
