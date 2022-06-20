@@ -6,26 +6,26 @@ import Login from './components/Login';
 import AllTeams from './components/AllTeams';
 import Dashboard from './components/Dashboard';
 import {useState, createContext} from 'react';
-
+import UserSession from './components/UserSession';
 export const AppContext = createContext(null)
-
-
 
 function App() {
   const [accessToken, setAccessToken] = useState('')
-  const [currTeam, setCurrTeam] = useState('')
 
   return (
+    
     //setting Token and Team in the AppContext
-    <AppContext.Provider value = {{accessToken,setAccessToken,currTeam,setCurrTeam}}>
+    <AppContext.Provider value = {{accessToken, setAccessToken}}>
       <div className="App">
         <BrowserRouter>
+        
           <PageNavbar />
           <div className='main-cointainer'>
 
               <Routes>
                 <Route exact path = "/login" element = {<Login title='Login' />}></Route>
                 <Route exact path = "/register" element = {<Login title='Sign up' />}></Route>
+                <Route exact path = "/user" element = {<UserSession/>}></Route>
                 <Route exact path = "/teams" element = {<AllTeams/>}></Route>
                 <Route exact path = "/dashboard" element = {<Dashboard/>}></Route>
               </Routes>

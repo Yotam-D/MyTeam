@@ -37,7 +37,7 @@ export default function Login(props) {
       console.log(response.data);
       setUImsg(response.data.msg)
       setAccessToken(response.data)
-      navigate('/teams')
+      navigate('/user')
     } catch (error) {
       console.error(error);
       setUImsg(error.response.data.msg)
@@ -76,16 +76,18 @@ export default function Login(props) {
           <TextField id='password' label = 'Enter Password' fullWidth sx={{mt:2, input: { color: 'white' }}} onChange={(e)=>setPassword(e.target.value)}/>
           
           {title === "Login" ? 
+            //on Login Screen return:
           <>
             <Button variant="text" onClick={()=>handleLog()}>Login</Button>
             <Box> <p>First Time?  <Link to='/register'>Sign up Here</Link></p> </Box>
           </>
           : 
+          //on Register Screen return:
           <>
             <TextField id='repassword' label = 'Confirm Password' fullWidth sx={{mt:2, input: { color: 'white' }}} onChange={(e)=>setPasswordCfm(e.target.value)}/>
             <TextField id='user_name' label = 'User Name' fullWidth sx={{mt:2, input: { color: 'white' }}} onChange={(e)=>setName(e.target.value)}/>
             <Button variant="text" onClick={()=>handleReg()}>Create User</Button>
-            <Box> <p>Already Have Account <Link to='/login'>Login Here</Link></p> </Box>
+            <Box> <p>Already Have Account? <Link to='/login'>Login Here</Link></p> </Box>
           </>
          }
           <Box>
