@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import UsersModel from "../models/UsersModels.js";
-import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 dotenv.config();
 
 
@@ -17,6 +17,7 @@ export const getUsers = async (req,res) => {
         res.status(404).json({mgs:'couldnt get users'})
     }
 }
+
 export const login = async (req,res) => {
     try {
         const user = await UsersModel.findAll({

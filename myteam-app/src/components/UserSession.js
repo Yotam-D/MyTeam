@@ -9,7 +9,6 @@ export default function UserSession() {
     const [userID,setUserID] = useState('')
     const [email,setEmail] = useState('')
     const [team,setTeam] = useState('')
-    const [exp, setExp] = useState('');
     const navigate = useNavigate();
     const {accessToken} = useContext(AppContext);
   
@@ -22,7 +21,6 @@ export default function UserSession() {
             setTeam(decode.team ? decode.team : 'none');
             const expire = decode.exp;
             console.log(expire*1000)
-            setExp(new Date(expire*1000).toString());
             if(expire * 1000 < new Date().getTime())
                 {
                 navigate('/login')
@@ -31,10 +29,10 @@ export default function UserSession() {
             console.log(error);
             navigate('/login')
         }
-      })
+      },[])
   return (
     <>
-        <div>UserSession Team: {team}, ID: {userID}</div>
+        <div>UserSession Team: {team}, ID: {userID}, Email: {email}</div>
         {
             team =='none' ? 
                 <AllTeams setUserTeam = {setTeam}/> : <Dashboard team ={team} />

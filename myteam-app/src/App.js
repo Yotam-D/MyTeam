@@ -18,11 +18,10 @@ function App() {
     <AppContext.Provider value = {{accessToken, setAccessToken}}>
       <div className="App">
         <BrowserRouter>
-        
           <PageNavbar />
           <div className='main-cointainer'>
-
               <Routes>
+                <Route exact path = "/" element = {<Login title='Login' />}></Route>
                 <Route exact path = "/login" element = {<Login title='Login' />}></Route>
                 <Route exact path = "/register" element = {<Login title='Sign up' />}></Route>
                 <Route exact path = "/user" element = {<UserSession/>}></Route>
