@@ -3,10 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import PageNavbar from './components/PageNavbar';
 import Login from './components/Login';
-import AllTeams from './components/AllTeams';
-import Dashboard from './components/Dashboard';
+import AllTeams from './components/Session/AllTeams';
+import Dashboard from './components/Session/Dashboard';
 import {useState, createContext} from 'react';
-import UserSession from './components/UserSession';
+import UserSession from './components/Session/UserSession';
 export const AppContext = createContext(null)
 
 function App() {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
-import { AppContext } from '../App';
+import { AppContext } from '../../App';
 import AllTeams from './AllTeams';
 import Dashboard from './Dashboard';
 
@@ -32,11 +32,11 @@ export default function UserSession() {
       },[])
   return (
     <>
-        <div>UserSession Team: {team}, ID: {userID}, Email: {email}</div>
         {
             team =='none' ? 
-                <AllTeams setUserTeam = {setTeam}/> : <Dashboard team ={team} />
+            <AllTeams setUserTeam = {setTeam}/> : <Dashboard team ={team} />
         }
+        <div>UserSession Team: {team}, ID: {userID}, Email: {email}</div>
     </>
 
   )
