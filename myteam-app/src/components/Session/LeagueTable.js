@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: '#0A0E28',
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -29,50 +29,61 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
+  team: string,
+  matches: number,
+  wins: number,
+  draws: number,
+  losses: number,
+  gf: number,
+  ga: number,
+  gd: number,
+  points: number,
 ) {
-  return { name, calories, fat, carbs, protein };
+  return { team, matches, wins, draws, losses, gf, ga, gd, points};
 }
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
+  createData('Man City', 83, 29, 6, 3, 99, 26, 73, 93),
+  createData('Liverpool', 83, 28, 8, 2, 94, 26, 68, 92),
 ];
 
 export default function LeagueTable() {
   return (
+  <div className='TableContainer'>
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <Table sx={{ minWidth: 1200 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+            <StyledTableCell>Team</StyledTableCell>
+            <StyledTableCell align="right">Matches</StyledTableCell>
+            <StyledTableCell align="right">Wins</StyledTableCell>
+            <StyledTableCell align="right">Draws</StyledTableCell>
+            <StyledTableCell align="right">Losses</StyledTableCell>
+            <StyledTableCell align="right">GF</StyledTableCell>
+            <StyledTableCell align="right">GA</StyledTableCell>
+            <StyledTableCell align="right">GD</StyledTableCell>
+            <StyledTableCell align="right">Points</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+            <StyledTableRow key={row.team}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {row.team}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              <StyledTableCell align="right">{row.matches}</StyledTableCell>
+              <StyledTableCell align="right">{row.wins}</StyledTableCell>
+              <StyledTableCell align="right">{row.draws}</StyledTableCell>
+              <StyledTableCell align="right">{row.losses}</StyledTableCell>
+              <StyledTableCell align="right">{row.gf}</StyledTableCell>
+              <StyledTableCell align="right">{row.ga}</StyledTableCell>
+              <StyledTableCell align="right">{row.gd}</StyledTableCell>
+              <StyledTableCell align="right">{row.points}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+  </div>
   );
 }

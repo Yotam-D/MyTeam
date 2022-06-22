@@ -15,12 +15,10 @@ export default function UserSession() {
     useEffect(()=>{
         try {
             const decode = jwt_decode(accessToken.accessToken);
-            console.log(decode);
             setUserID(decode.userID);
             setEmail(decode.email);
             setTeam(decode.team ? decode.team : 'none');
             const expire = decode.exp;
-            console.log(expire*1000)
             if(expire * 1000 < new Date().getTime())
                 {
                 navigate('/login')
@@ -29,11 +27,11 @@ export default function UserSession() {
             console.log(error);
             navigate('/login')
         }
-      },[])
+      },[accessToken.accessToken, navigate])
   return (
     <>
         {
-            team =='none' ? 
+            team === 'none' ? 
             <AllTeams setUserTeam = {setTeam}/> : <Dashboard team ={team} />
         }
         <div>UserSession Team: {team}, ID: {userID}, Email: {email}</div>

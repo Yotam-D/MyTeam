@@ -3,14 +3,13 @@ import React from 'react'
 import sideElements from './SidebarElements';
 
 
-export default function Sidebar() {
-  const [checked, setChecked] = useState("League");
+export default function Sidebar(props) {
+  const [checked, setChecked] = useState(props.currPage);
 
   const handleSideClick = (clickedTitle) => {
     setChecked(clickedTitle)
+    props.switchPageHandler(clickedTitle)
   }
-
-
 
   return (
     <div className='sidebar'>

@@ -9,7 +9,7 @@ export default class PageNavbar extends Component {
   render() {
     return (
       <div>
-        <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" >
+        <Navbar collapseOnSelect expand="lg" variant="dark" style={{ background: '#252c48' }}>
           <Container>
           <Navbar.Brand as={Link} to="/home">
             <img src={Logo} width="25" height="25" className="d-inline-block align-top m-0" alt="Logo" /> MyTeam
