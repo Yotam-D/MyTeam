@@ -9,7 +9,7 @@ export default class Dashboard extends Component {
     super(props);
     this.state = {
       CurrentTeam : props.team,
-      CurrentPage : 'League',
+      CurrentPage : 'Club',
     }
     this.switchPageHandler = this.switchPageHandler.bind(this);
   }

@@ -115,42 +115,87 @@
 
 .cards-container{
   width: 85%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
+  display: inline-flex;
 }
 
 .dash-card{
-  margin: 1rem ;
+  margin-left: 1rem ;
+  margin-top: 1rem ;
   background-color: #262b49;
   border-radius: 0.5rem;
 }
 
 .pie-container{
-  padding: 0.5rem;
-  height: 8rem;
-  width :7rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  height: 11rem;
+  width :15rem;
 }
 
-.scatter-container{
-  padding: 0.5rem;
-  height: 12rem;
-  width :16rem;
+VictoryChart{
+  padding: 2rem;
 }
 
-.histogram-container{
-  padding: 0.5rem;
-  height: 20rem;
-  width :20rem;
+.scatter-container, .histogram-container{
+  padding: 1rem;
+  height: 24rem;
+  width :45rem;
 }
 
 .card-title{
-  font-size: 0.7rem;
+  font-size: 1rem;
   padding: 0;
+  margin-bottom: 0 !important;
 }
 
 .TableContainer{
+  width:85%;
   padding: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
+.card-container{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.club-card{
+  margin: 1rem 0 0 1rem ;
+  width:25rem;
+  height: auto;
+  padding-top: 1rem;
+  background-color: #262b49;
+  border-radius: 2em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: space-around;
+  
+}
+
+.club-card img{
+  height:10rem;
+  width: 10rem;
+}
+
+.stadium-card{
+  margin: 1rem 0 0 1rem ;
+  width:40rem;
+  height: auto;
+  padding-top: 1rem;
+  background-color: #262b49;
+  border-radius: 2em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: space-around;
+}
+
+.stadium-card img{
+  height: 13rem;
+  width: 18rem;
+  border-radius: 2rem;
+}
