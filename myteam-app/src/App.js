@@ -11,6 +11,7 @@ export const AppContext = createContext(null)
 
 function App() {
   const [accessToken, setAccessToken] = useState('')
+  const [isLogged, setIsLogged] = useState(false)
 
   return (
     
@@ -18,11 +19,11 @@ function App() {
     <AppContext.Provider value = {{accessToken, setAccessToken}}>
       <div className="App">
         <BrowserRouter>
-          <PageNavbar />
+          <PageNavbar LoggedStatus = {isLogged} setLogStatus = {setIsLogged} setToken = {setAccessToken}/>
           <div className='main-cointainer'>
               <Routes>
-                <Route exact path = "/" element = {<Login title='Login' />}></Route>
-                <Route exact path = "/login" element = {<Login title='Login' />}></Route>
+                <Route exact path = "/" element = {<Login title='Login' setLogStatus = {setIsLogged}/>}></Route>
+                <Route exact path = "/login" element = {<Login title='Login' setLogStatus = {setIsLogged} />}></Route>
                 <Route exact path = "/register" element = {<Login title='Sign up' />}></Route>
                 <Route exact path = "/user" element = {<UserSession/>}></Route>
                 <Route exact path = "/teams" element = {<AllTeams/>}></Route>

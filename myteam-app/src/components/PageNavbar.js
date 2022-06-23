@@ -6,7 +6,11 @@ import Logo from '../assets/soccer-svgrepo-com.svg';
 import {Link} from 'react-router-dom';
 
 export default class PageNavbar extends Component {
+  constructor(props){
+    super(props)
+  }
   render() {
+    console.log(this.props)
     return (
       <div>
         <Navbar collapseOnSelect expand="lg" variant="dark" style={{ background: '#252c48' }}>
@@ -18,9 +22,16 @@ export default class PageNavbar extends Component {
           <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
               </Nav>
-              <Nav>
-              <Nav.Link as={Link} to="/login">Login</Nav.Link>
-              </Nav>
+              {
+                  this.props.LoggedStatus ? 
+                    <Nav>
+                    <Nav.Link as={Link} to="/login" onClick={()=>this.props.setLogStatus(false)}> Logout </Nav.Link>
+                    </Nav>                
+                    :
+                    <Nav>
+                    <Nav.Link as={Link} to="/login"> Login </Nav.Link>
+                    </Nav>
+              }
           </Navbar.Collapse>
           </Container>
         </Navbar>

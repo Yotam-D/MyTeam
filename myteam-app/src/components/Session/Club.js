@@ -3,7 +3,6 @@ import Teams from './TeamList.json';
 
 export default function Club(props) {
   const teamInfo = Teams.find(element => element.team.name === props.currTeam);
-  console.log(teamInfo);
   return (
     <div className='card-container'>
       <div className='club-card'>
@@ -23,6 +22,7 @@ export default function Club(props) {
 
         </div>
       </div>
+        <button className='ChangeTeam' onClick={()=>props.setTeam('')}>Pick another Team</button>
     </div>
   )
 }

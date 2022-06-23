@@ -34,6 +34,7 @@ export default function Login(props) {
           'Content-Type' : 'application/json',
         }
       })
+      props.setLogStatus(true)
       console.log(response.data);
       setUImsg(response.data.msg)
       setAccessToken(response.data)

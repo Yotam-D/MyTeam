@@ -8,7 +8,6 @@ export default class Dashboard extends Component {
   constructor(props){
     super(props);
     this.state = {
-      CurrentTeam : props.team,
       CurrentPage : 'Club',
     }
     this.switchPageHandler = this.switchPageHandler.bind(this);
@@ -23,11 +22,11 @@ export default class Dashboard extends Component {
   renderSwitch(showPage) {
     switch(showPage) {
       case 'League':
-        return (<LeagueTable currTeam = {this.state.CurrentTeam}/>);
+        return (<LeagueTable currTeam = {this.props.team}/>);
       case 'Club':
-        return (<Club currTeam = {this.state.CurrentTeam}/>);
+        return (<Club currTeam = {this.props.team} setTeam = {this.props.setUserTeam}/>);
       case 'Stats':
-        return (<Stats currTeam = {this.state.CurrentTeam}/>);
+        return (<Stats currTeam = {this.props.team}/>);
       default:
         return (<LeagueTable/>);
     }
@@ -38,9 +37,8 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className='dashboard-container'>
-          <Sidebar currPage={this.state.CurrentPage} switchPageHandler={this.switchPageHandler}/>
+          <Sidebar currPage={this.state.CurrentPage} switchPageHandler={this.switchPageHandler} team={this.props.team} name = {this.props.name}/>
           {this.renderSwitch(this.state.CurrentPage)}
-          {/* <LeagueTable/> */}
       </div>
     )
   }

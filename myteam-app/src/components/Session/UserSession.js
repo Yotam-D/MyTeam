@@ -8,6 +8,7 @@ import Dashboard from './Dashboard';
 export default function UserSession() {
     const [userID,setUserID] = useState('')
     const [email,setEmail] = useState('')
+    const [name,setName] = useState('')
     const [team,setTeam] = useState('')
     const navigate = useNavigate();
     const {accessToken} = useContext(AppContext);
@@ -17,7 +18,8 @@ export default function UserSession() {
             const decode = jwt_decode(accessToken.accessToken);
             setUserID(decode.userID);
             setEmail(decode.email);
-            setTeam(decode.team ? decode.team : 'none');
+            setName(decode.name)
+            setTeam(decode.team ? decode.team : '');
             const expire = decode.exp;
             if(expire * 1000 < new Date().getTime())
                 {
@@ -31,10 +33,9 @@ export default function UserSession() {
   return (
     <>
         {
-            team === 'none' ? 
-            <AllTeams setUserTeam = {setTeam}/> : <Dashboard team ={team} />
+            team === '' ? 
+            <AllTeams setUserTeam = {setTeam} /> : <Dashboard team ={team} setUserTeam = {setTeam} name = {name} />
         }
-        <div>UserSession Team: {team}, ID: {userID}, Email: {email}</div>
     </>
 
   )

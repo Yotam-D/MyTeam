@@ -30,7 +30,7 @@ export const login = async (req,res) => {
         const userID = user[0].id;
         const email = user[0].email;
         const name = user[0].name;
-        const accessToken = jwt.sign({userID,email}, process.env.ACCESS_TOKEN_SECRET,{
+        const accessToken = jwt.sign({userID,email,name}, process.env.ACCESS_TOKEN_SECRET,{
             expiresIn: '300s'
         })
         res.cookie('accessToken', accessToken, {
