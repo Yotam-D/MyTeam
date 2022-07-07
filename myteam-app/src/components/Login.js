@@ -9,6 +9,7 @@ import { AppContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 
 
+
 export default function Login(props) {
   const navigate = useNavigate();
   const {title} = props;
@@ -74,8 +75,8 @@ export default function Login(props) {
         <h2>{title}</h2>
         <Box component="form" noValidate p={3} autoComplete='off'>
           <TextField id='email' label = 'Enter Email' fullWidth sx={{ input: { color: 'white' }}} onChange={(e)=>setEmail(e.target.value)}/>
-          <TextField id='password' label = 'Enter Password' fullWidth sx={{mt:2, input: { color: 'white' }}} onChange={(e)=>setPassword(e.target.value)}/>
-          
+          <TextField id='outlined-password-input' type='password' label = 'Enter Password' fullWidth sx={{mt:2, input: { color: 'white' }}} onChange={(e)=>setPassword(e.target.value)}/>
+
           {title === "Login" ? 
             //on Login Screen return:
           <>
@@ -85,7 +86,7 @@ export default function Login(props) {
           : 
           //on Register Screen return:
           <>
-            <TextField id='repassword' label = 'Confirm Password' fullWidth sx={{mt:2, input: { color: 'white' }}} onChange={(e)=>setPasswordCfm(e.target.value)}/>
+            <TextField id='outlined-password-input' type='password' label = 'Confirm Password' fullWidth sx={{mt:2, input: { color: 'white' }}} onChange={(e)=>setPasswordCfm(e.target.value)}/>
             <TextField id='user_name' label = 'User Name' fullWidth sx={{mt:2, input: { color: 'white' }}} onChange={(e)=>setName(e.target.value)}/>
             <Button variant="text" onClick={()=>handleReg()}>Create User</Button>
             <Box> <p>Already Have Account? <Link to='/login'>Login Here</Link></p> </Box>

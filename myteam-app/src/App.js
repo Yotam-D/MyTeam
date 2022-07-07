@@ -7,6 +7,14 @@ import AllTeams from './components/Session/AllTeams';
 import Dashboard from './components/Session/Dashboard';
 import {useState, createContext} from 'react';
 import UserSession from './components/Session/UserSession';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 export const AppContext = createContext(null)
 
 function App() {
@@ -18,20 +26,22 @@ function App() {
     //setting Token and Team in the AppContext
     <AppContext.Provider value = {{accessToken, setAccessToken}}>
       <div className="App">
-        <BrowserRouter>
-          <PageNavbar LoggedStatus = {isLogged} setLogStatus = {setIsLogged} setToken = {setAccessToken}/>
-          <div className='main-cointainer'>
-              <Routes>
-                <Route exact path = "/" element = {<Login title='Login' setLogStatus = {setIsLogged}/>}></Route>
-                <Route exact path = "/login" element = {<Login title='Login' setLogStatus = {setIsLogged} />}></Route>
-                <Route exact path = "/register" element = {<Login title='Sign up' />}></Route>
-                <Route exact path = "/user" element = {<UserSession/>}></Route>
-                <Route exact path = "/teams" element = {<AllTeams/>}></Route>
-                <Route exact path = "/dashboard" element = {<Dashboard/>}></Route>
-              </Routes>
+        <ThemeProvider theme={darkTheme}>
+          <BrowserRouter>
+            <PageNavbar LoggedStatus = {isLogged} setLogStatus = {setIsLogged} setToken = {setAccessToken}/>
+            <div className='main-cointainer'>
+                <Routes>
+                  <Route exact path = "/" element = {<Login title='Login' setLogStatus = {setIsLogged}/>}></Route>
+                  <Route exact path = "/login" element = {<Login title='Login' setLogStatus = {setIsLogged} />}></Route>
+                  <Route exact path = "/register" element = {<Login title='Sign up' />}></Route>
+                  <Route exact path = "/user" element = {<UserSession/>}></Route>
+                  <Route exact path = "/teams" element = {<AllTeams/>}></Route>
+                  <Route exact path = "/dashboard" element = {<Dashboard/>}></Route>
+                </Routes>
 
-          </div>
-        </BrowserRouter>
+            </div>
+          </BrowserRouter>
+        </ThemeProvider>
       </div>
     </AppContext.Provider>
   );

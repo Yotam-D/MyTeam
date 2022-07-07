@@ -22,7 +22,7 @@ export default function Club(props) {
 
         </div>
       </div>
-        <button className='ChangeTeam' onClick={()=>props.setTeam('')}>Pick another Team</button>
+        <button className='ChangeTeam' onClick={()=>props.setTeam('')}>Switch Team</button>
     </div>
   )
 }

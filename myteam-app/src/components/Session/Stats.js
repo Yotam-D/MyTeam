@@ -3,20 +3,23 @@ import * as V from 'victory';
 import {VictoryPie, VictoryChart,VictoryLabel, VictoryArea, VictoryBar, VictoryAxis} from 'victory';
 import Teams from './TeamList.json';
 
+
 export default function Stats(props) {
+  
   const whiteStyle = {
     axis: { stroke: "white" },
     axisLabel: { fontSize: 15, padding: 20, fill: "white" },
     tickLabels: { fontSize: 13, padding: 5, fill: "white" } 
-  }
-  const pieLabels = {
-    labels: { fontSize: 30, fill: "white"},
   };
+
+  const pieLabels = {
+    labels: { fontSize: 35, fill: "white"},
+  };
+
   const teamInfo = Teams.find(element => element.team.name === props.currTeam);
   const goalsData = teamInfo.stats.response.goals.for.minute;
   const formationData = (teamInfo.stats.response.lineups).map((item,i)=> {return {x:i+1, y:item.played, form:item.formation}});
   const matchesData = (teamInfo.stats.response.fixtures)
-  // console.log('logHERE', cardsData)
   const graphsData = {
     goal_distribution: 
       [
@@ -48,7 +51,11 @@ export default function Stats(props) {
         { x: 2, y: 27, label: "27 Yellow" },
       ],
   }
-    console.log(graphsData)
+
+  const teamForm = teamInfo.stats.response.form
+  const formString= teamForm.substr(teamForm.length - 5).replace(/(.{1})/g,"$1-").slice(0, -1);;
+
+
 
   return (
     <>
@@ -130,13 +137,19 @@ export default function Stats(props) {
               <VictoryPie
                 colorScale={["red", "yellow"]}
                 padAngle={({ datum }) => datum.y}
-                innerRadius={110}
+                innerRadius={100}
                 data={[
                   { x: 1, y: 5, label: "5 Red" },
                   { x: 2, y: 27, label: "27 Yellow" },
                 ]}
                 style={pieLabels}
               />
+            </div>
+            <div className = 'pie-container dash-card'>
+              <h5 className='card-title'>Last 5 matches</h5>
+              <div>
+              <h3 className='team-from'>{formString}</h3>
+              </div>
             </div>
           </div>
         

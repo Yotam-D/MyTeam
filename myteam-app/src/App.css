@@ -127,9 +127,8 @@
 }
 
 .pie-container{
-  padding-top: 0.6rem;
-  padding-bottom: 0.6rem;
-  height: 11rem;
+  padding: 0.4rem 0rem 1.5rem 0rem;
+  height: 11.5rem;
   width :15rem;
 }
 
@@ -207,7 +206,8 @@ VictoryChart{
   font-size: 1.2rem;
   margin-top: 2rem;
   cursor: pointer;
-  background-color: #9298be;
+  border-radius: 5px;
+  background-color: #262b49;
 }
 
 .user-sideInfo{
@@ -223,4 +223,8 @@ VictoryChart{
 
 .avatar-club image{
   object-fit:fill;
+}
+
+.team-from{
+  padding-top: 3rem;
 }
