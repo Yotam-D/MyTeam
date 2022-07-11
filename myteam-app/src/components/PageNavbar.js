@@ -15,24 +15,24 @@ export default class PageNavbar extends Component {
       <div>
         <Navbar collapseOnSelect expand="lg" variant="dark" style={{ background: '#252c48' }}>
           <Container>
-          <Navbar.Brand as={Link} to="/">
-            <img src={Logo} width="25" height="25" className="d-inline-block align-top m-0" alt="Logo" /> MyTeam
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="me-auto">
-              </Nav>
-              {
-                  this.props.LoggedStatus ? 
-                    <Nav>
-                    <Nav.Link as={Link} to="/login" onClick={()=>this.props.setLogStatus(false)}> Logout </Nav.Link>
-                    </Nav>                
-                    :
-                    <Nav>
-                    <Nav.Link as={Link} to="/login"> Login </Nav.Link>
-                    </Nav>
-              }
-          </Navbar.Collapse>
+            <Navbar.Brand as={Link} to="/">
+              <img src={Logo} width="25" height="25" className="d-inline-block align-top m-0" alt="Logo" /> MyTeam
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="me-auto">
+                </Nav>
+                {
+                    this.props.LoggedStatus ? 
+                      <Nav>
+                      <Nav.Link as={Link} to="/login" onClick={()=>this.props.setLogStatus(false)}> Logout </Nav.Link>
+                      </Nav>                
+                      :
+                      <Nav>
+                      <Nav.Link as={Link} to="/login"> Login </Nav.Link>
+                      </Nav>
+                }
+            </Navbar.Collapse>
           </Container>
         </Navbar>
       </div>

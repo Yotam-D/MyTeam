@@ -42,6 +42,8 @@ function createData(
   return { team, matches, wins, draws, losses, gf, ga, gd, points};
 }
 
+
+//local saved data for app, can be replaced with API call in the future.
 const rows = [
   createData('Man City', 38, 29, 6, 3, 99, 26, 73, 93),
   createData('Liverpool', 38, 28, 8, 2, 94, 26, 68, 92),

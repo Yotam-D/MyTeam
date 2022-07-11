@@ -1,6 +1,7 @@
 import React from 'react';
 import Teams from './TeamList.json';
 
+// shows the team information on the "Club" Tab on the Dashboard
 export default function Club(props) {
   const teamInfo = Teams.find(element => element.team.name === props.currTeam);
   return (
@@ -22,6 +23,7 @@ export default function Club(props) {
 
         </div>
       </div>
+      {/* the ability the switch team inherited from Dashboard component  */}
         <button className='ChangeTeam' onClick={()=>props.setTeam('')}>Switch Team</button>
     </div>
   )

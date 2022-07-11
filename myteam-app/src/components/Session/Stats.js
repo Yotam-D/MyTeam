@@ -5,21 +5,23 @@ import Teams from './TeamList.json';
 
 
 export default function Stats(props) {
-  
+  // fixed default style for labels and data on graphs
   const whiteStyle = {
     axis: { stroke: "white" },
     axisLabel: { fontSize: 15, padding: 20, fill: "white" },
     tickLabels: { fontSize: 13, padding: 5, fill: "white" } 
   };
-
   const pieLabels = {
     labels: { fontSize: 35, fill: "white"},
   };
 
+  // Setting data for graphs - saved localy saved on TeamList.json file, can be replaced with API call in the future with the same structure.
   const teamInfo = Teams.find(element => element.team.name === props.currTeam);
   const goalsData = teamInfo.stats.response.goals.for.minute;
   const formationData = (teamInfo.stats.response.lineups).map((item,i)=> {return {x:i+1, y:item.played, form:item.formation}});
   const matchesData = (teamInfo.stats.response.fixtures)
+  const teamForm = teamInfo.stats.response.form
+  const formString= teamForm.substr(teamForm.length - 5).replace(/(.{1})/g,"$1-").slice(0, -1);;
   const graphsData = {
     goal_distribution: 
       [
@@ -51,11 +53,6 @@ export default function Stats(props) {
         { x: 2, y: 27, label: "27 Yellow" },
       ],
   }
-
-  const teamForm = teamInfo.stats.response.form
-  const formString= teamForm.substr(teamForm.length - 5).replace(/(.{1})/g,"$1-").slice(0, -1);;
-
-
 
   return (
     <>
@@ -152,10 +149,6 @@ export default function Stats(props) {
               </div>
             </div>
           </div>
-        
-
-          
-
         </div>
     </>
   )

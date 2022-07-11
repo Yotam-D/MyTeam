@@ -4,7 +4,8 @@ import { Box } from '@mui/system';
 import teamList from './TeamList.json';
 
 export default function AllTeams(props) {
-  //***for fetching Teams Data fron the API
+  //***for fetching Teams Data fron the API****
+  
   // const options = {
   //   method: 'GET',
   //   url: 'https://api-football-beta.p.rapidapi.com/teams',
@@ -27,11 +28,11 @@ export default function AllTeams(props) {
 // ***
 
   return (
+    //Show all the teams that the user can choose
     <div>
       <Box sx={{pt:2}}>
         <h1>Select Your Team!</h1>
       </Box>
-      
       <div className='teams-container'>
         {teamList.map((team,ind) => {
           return(

@@ -22,8 +22,7 @@ function App() {
   const [isLogged, setIsLogged] = useState(false)
 
   return (
-    
-    //setting Token and Team in the AppContext
+        //setting Token and Team in the AppContext
     <AppContext.Provider value = {{accessToken, setAccessToken}}>
       <div className="App">
         <ThemeProvider theme={darkTheme}>

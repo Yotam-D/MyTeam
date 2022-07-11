@@ -20,6 +20,7 @@ export default function Login(props) {
   const [UImsg, setUImsg] = useState('')
   const {setAccessToken} = useContext(AppContext)
 
+  // on mount set user massage back to nothing
   useEffect(()=> {
     setUImsg('')
   }, [])
@@ -96,7 +97,6 @@ export default function Login(props) {
             <p className='ui-massage'>{UImsg}</p>
           </Box>
        </Box>
-        
       </Container>
     </>
 

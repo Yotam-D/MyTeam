@@ -16,10 +16,9 @@ export default function Sidebar(props) {
     props.switchPageHandler(clickedTitle)
   }
 
-
-
   return (
     <div className='sidebar'>
+      {/* user info Section */}
           <div className='user-sideInfo'>
             <div>
               <Avatar
@@ -41,7 +40,9 @@ export default function Sidebar(props) {
           </div>
           <Divider variant="middle" />
           
+          {/* sidebar elements (Tabs) Section */}
         <ul className = 'sideList'>
+          {/* side bar elements imported from SidebarElements.js module */}
             {sideElements.map((item,index)=> {
                 return(
                         <li className = {item.title === checked ? 'checkedItem' : 'uncheckedItem'} key = {index} onClick ={()=> handleSideClick(item.title)}>

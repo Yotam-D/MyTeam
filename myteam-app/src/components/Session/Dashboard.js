@@ -6,7 +6,9 @@ import Stats from './Stats';
 
 export default class Dashboard extends Component {
   constructor(props){
+    // Inherits the team selected and user info from the UserSession Component.
     super(props);
+    // Initiate CurrentPage value sets the default screen on the dashboard (Club/League/Stats)
     this.state = {
       CurrentPage : 'Club',
     }
@@ -31,9 +33,7 @@ export default class Dashboard extends Component {
         return (<LeagueTable/>);
     }
   }
-
-  
-  
+   
   render() {
     return (
       <div className='dashboard-container'>
