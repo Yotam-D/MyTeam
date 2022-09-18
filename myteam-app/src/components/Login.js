@@ -82,7 +82,9 @@ export default function Login(props) {
             //on Login Screen return:
           <>
             <Button variant="text" onClick={()=>handleLog()}>Login</Button>
-            <Box> <p>First Time?  <Link to='/register'>Sign up Here</Link></p> </Box>
+            <Box> <h5>easy access:</h5> </Box>
+            <Box> <p> email: test.test@test <br></br> password: 123456</p> </Box>
+            <Box> <p>Or, <Link to='/register'>Sign up Here</Link></p> </Box>
           </>
           : 
           //on Register Screen return:
