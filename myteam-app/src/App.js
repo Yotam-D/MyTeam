@@ -14,7 +14,7 @@ const darkTheme = createTheme({
     mode: 'dark',
   },
 });
-
+//use context
 export const AppContext = createContext(null)
 
 function App() {
