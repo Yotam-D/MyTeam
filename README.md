@@ -1,5 +1,9 @@
 # MyTeam
 
+Visit the app live here:
+https://myteam.herokuapp.com/
+
+
 Final Project for the DI Course.
 
 MyTeam is a web application for soccer lovers!
@@ -10,6 +14,7 @@ the app collects all your favorite team's info and stats and graphics and show i
 - The design is based on CSS, flex layout with customize Material-UI elements.
 - Charts and Data vizualization made with Victory Library.
 - Used JWT authentication for safe register and login proccess.
+- deployed to Heroku server
 
 
 Enjoy
