@@ -25,9 +25,7 @@ export const login = async (req,res) => {
                 email: req.body.email
             }
         })
-        console.log("USER:",user);
         const match = await bcrypt.compare(req.body.password,user[0].password)
-        console.log("MATCH:",match);
         if(!match) return res.status(404).json({msg:'Password is incorrect!'})
         const userID = user[0].id;
         const email = user[0].email;
