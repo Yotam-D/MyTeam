@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e042a7b3.css",
+    "main.js": "/static/js/main.97562d9a.js",
+    "static/js/787.0ae7f776.chunk.js": "/static/js/787.0ae7f776.chunk.js",
+    "static/media/soccer-svgrepo-com.svg": "/static/media/soccer-svgrepo-com.342bd740bba05e43154af129cc31d69c.svg",
+    "index.html": "/index.html",
+    "main.e042a7b3.css.map": "/static/css/main.e042a7b3.css.map",
+    "main.97562d9a.js.map": "/static/js/main.97562d9a.js.map",
+    "787.0ae7f776.chunk.js.map": "/static/js/787.0ae7f776.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e042a7b3.css",
+    "static/js/main.97562d9a.js"
+  ]
+}

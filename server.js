@@ -20,11 +20,11 @@ try {
 }
 
 app.use(express.json())
+app.use(express.static('build'));
 app.use(cors({credentials:true, origin:'http://localhost:3000'}))
 app.use(cookieParser());
 app.use(express.urlencoded({extended:true}))
 app.use(router)
-app.use(express.static(path.join(__dirname + "/public")))
 
 //openning port for listenning from according to the .env file (default 5000 if not working)
 const activePort = process.env.PORT ? process.env.PORT : 5000;
